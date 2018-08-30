@@ -4,7 +4,7 @@ import com.arctouch.codechallenge.activity.base.BaseNetworkActivity
 import com.arctouch.codechallenge.di.module.NetworkModule
 import dagger.Component
 
-@Component(modules = arrayOf(NetworkModule::class))
+@Component(modules = [(NetworkModule::class)])
 interface NetworkComponent {
 
   fun inject(networkActivity: BaseNetworkActivity)
