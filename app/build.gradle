@@ -47,6 +47,7 @@ dependencies {
     implementation libs.glide
     implementation libs.rxAndroid
     implementation libs.dagger
+    implementation libs.daggerAndroid
 
     // kotlin annotations processors
     kapt libs.daggerCompiler
