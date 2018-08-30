@@ -15,14 +15,15 @@ import javax.inject.Inject
 class HomeActivity : BaseNetworkActivity(), HomeView {
 
     @Inject lateinit var presenter: HomePresenter
+    private var movies: MutableList<Movie> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
+        recyclerView.adapter = HomeAdapter(movies)
         DaggerHomeComponent.builder()
-                           .homeModule(HomeModule(this))
-                           .build()
-                           .inject(this)
+                            .create(this)
+                            .inject(this)
         presenter.onCreate(savedInstanceState)
     }
 
@@ -35,7 +36,8 @@ class HomeActivity : BaseNetworkActivity(), HomeView {
     }
 
     override fun addMovies(movies: List<Movie>) {
-        recyclerView.adapter = HomeAdapter(movies)
+        this.movies.addAll(movies)
+        recyclerView.adapter.notifyDataSetChanged()
     }
 
     override fun onError(exception: Exception) {
