@@ -9,11 +9,14 @@ import com.arctouch.codechallenge.model.Movie
 import com.arctouch.codechallenge.util.MovieImageUrlBuilder
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import kotlinx.android.synthetic.main.movie_item.view.*
+import kotlinx.android.synthetic.main.movie_item.view.genresTextView
+import kotlinx.android.synthetic.main.movie_item.view.posterImageView
+import kotlinx.android.synthetic.main.movie_item.view.releaseDateTextView
+import kotlinx.android.synthetic.main.movie_item.view.titleTextView
 
 class HomeAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         private val movieImageUrlBuilder = MovieImageUrlBuilder()
 
