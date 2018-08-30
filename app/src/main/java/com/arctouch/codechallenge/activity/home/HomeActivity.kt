@@ -3,34 +3,45 @@ package com.arctouch.codechallenge.activity.home
 import android.os.Bundle
 import android.view.View
 import com.arctouch.codechallenge.R
-import com.arctouch.codechallenge.api.TmdbApi
-import com.arctouch.codechallenge.activity.base.BaseActivity
 import com.arctouch.codechallenge.activity.base.BaseNetworkActivity
-import com.arctouch.codechallenge.data.Cache
+import com.arctouch.codechallenge.di.component.DaggerHomeComponent
+import com.arctouch.codechallenge.di.module.HomeModule
 import com.arctouch.codechallenge.extension.toast
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import com.arctouch.codechallenge.model.Movie
 import kotlinx.android.synthetic.main.home_activity.*
+import java.lang.Exception
+import javax.inject.Inject
 
 class HomeActivity : BaseNetworkActivity(), HomeView {
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.home_activity)
+    @Inject lateinit var presenter: HomePresenter
 
-    serviceAPI.upcomingMovies(TmdbApi.API_KEY, TmdbApi.DEFAULT_LANGUAGE, 1, TmdbApi.DEFAULT_REGION)
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe {
-          val moviesWithGenres = it.results.map { movie ->
-            movie.copy(genres = Cache.genres.filter { movie.genreIds?.contains(it.id) == true })
-          }
-          recyclerView.adapter = HomeAdapter(moviesWithGenres)
-          progressBar.visibility = View.GONE
-        }
-  }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.home_activity)
+        DaggerHomeComponent.builder()
+                           .homeModule(HomeModule(this))
+                           .build()
+                           .inject(this)
+        presenter.onCreate(savedInstanceState)
+    }
 
-  override fun onStartSearch() {}
+    override fun onStartSearch() {
+        progressBar.visibility = View.VISIBLE
+    }
 
-  override fun onStopSearch() {}
+    override fun onStopSearch() {
+        progressBar.visibility = View.GONE
+    }
+
+    override fun addMovies(movies: List<Movie>) {
+        recyclerView.adapter = HomeAdapter(movies)
+    }
+
+    override fun onError(exception: Exception) {
+        toast("ooops...")
+        finish()
+    }
+
+
 }
