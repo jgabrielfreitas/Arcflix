@@ -36,12 +36,18 @@ dependencies {
 
     def libs = rootProject.ext
 
+    // related
     libs.kotlinRelated.each { implementation it }
     libs.mobileUIRelated.each { implementation it }
     libs.retrofitRelated.each { implementation it }
     libs.unitTestingJavaOnlyRelated.each { testImplementation it }
     libs.androidTestingRelated.each { androidTestImplementation it }
 
+    // libraries
     implementation libs.glide
     implementation libs.rxAndroid
+    implementation libs.dagger
+
+    // kotlin annotations processors
+    kapt libs.daggerCompiler
 }
