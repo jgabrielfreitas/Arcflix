@@ -3,9 +3,9 @@ package com.arctouch.codechallenge.activity.splash
 import android.content.Intent
 import android.os.Bundle
 import com.arctouch.codechallenge.R
-import com.arctouch.codechallenge.api.TmdbApi
+import com.arctouch.codechallenge.infra.api.TmdbApi
 import com.arctouch.codechallenge.activity.base.BaseActivity
-import com.arctouch.codechallenge.data.Cache
+import com.arctouch.codechallenge.infra.data.Cache
 import com.arctouch.codechallenge.activity.home.HomeActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
