@@ -5,7 +5,6 @@ import android.view.View
 import com.arctouch.codechallenge.R
 import com.arctouch.codechallenge.activity.base.BaseNetworkActivity
 import com.arctouch.codechallenge.di.component.DaggerHomeComponent
-import com.arctouch.codechallenge.di.module.HomeModule
 import com.arctouch.codechallenge.extension.toast
 import com.arctouch.codechallenge.model.Movie
 import kotlinx.android.synthetic.main.home_activity.*
