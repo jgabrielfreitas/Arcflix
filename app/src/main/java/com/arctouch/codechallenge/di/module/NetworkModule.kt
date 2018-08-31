@@ -4,6 +4,7 @@ import com.arctouch.codechallenge.infra.api.TmdbApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -12,10 +13,20 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 class NetworkModule {
 
   @Provides
-  fun providesRetrofit(): TmdbApi {
+  fun providesHttpClient(): OkHttpClient {
+
+    val interceptor = HttpLoggingInterceptor()
+    interceptor.level = HttpLoggingInterceptor.Level.BODY
+    return OkHttpClient.Builder()
+                       .addInterceptor(interceptor)
+                       .build()
+  }
+
+  @Provides
+  fun providesRetrofit(httpClient: OkHttpClient): TmdbApi {
     return Retrofit.Builder()
                    .baseUrl(TmdbApi.URL)
-                   .client(OkHttpClient.Builder().build())
+                   .client(httpClient)
                    .addConverterFactory(MoshiConverterFactory.create())
                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                    .build()
