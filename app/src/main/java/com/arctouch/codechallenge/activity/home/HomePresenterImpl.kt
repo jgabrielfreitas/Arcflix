@@ -3,10 +3,10 @@ package com.arctouch.codechallenge.activity.home
 import android.os.Bundle
 import com.arctouch.codechallenge.activity.base.BasePresenterImpl
 import com.arctouch.codechallenge.helper.MovieHelper
-import com.arctouch.codechallenge.infra.HttpResponseHandler
-import com.arctouch.codechallenge.infra.service.tmdb.TmdbService
-import com.arctouch.codechallenge.model.Movie
-import com.arctouch.codechallenge.model.UpcomingMoviesResponse
+import com.jgabrielfreitas.infrastructure.HttpResponseHandler
+import com.jgabrielfreitas.infrastructure.service.tmdb.TmdbService
+import com.jgabrielfreitas.models.Movie
+import com.jgabrielfreitas.models.UpcomingMoviesResponse
 import java.lang.Exception
 
 class HomePresenterImpl(var view: HomeView, var serviceApi: TmdbService) : BasePresenterImpl(view),

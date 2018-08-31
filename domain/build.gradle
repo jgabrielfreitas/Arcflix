@@ -1,0 +1,5 @@
+apply from: "../base-module.gradle"
+
+dependencies {
+  api project(':infrastructure')
+}
