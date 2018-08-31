@@ -2,6 +2,7 @@ package com.arctouch.codechallenge.activity.home
 
 import android.os.Bundle
 import com.arctouch.codechallenge.activity.base.BasePresenterImpl
+import com.arctouch.codechallenge.helper.MovieHelper
 import com.arctouch.codechallenge.infra.HttpResponseHandler
 import com.arctouch.codechallenge.infra.data.Cache
 import com.arctouch.codechallenge.infra.service.tmdb.TmdbService
@@ -29,10 +30,8 @@ class HomePresenterImpl(var view: HomeView, var serviceApi: TmdbService) : BaseP
     }
 
     override fun onReceive(response: UpcomingMoviesResponse) {
-        val moviesWithGenres = response.results.map { movie ->
-            movie.copy(genres = Cache.genres.filter { movie.genreIds?.contains(it.id) == true })
-        }
-        view.addMovies(moviesWithGenres)
+        val filteredMovies = MovieHelper().filterMoviesCachedIds(response.results)
+        view.addMovies(filteredMovies)
     }
 
     override fun onError(throwable: Throwable) {
