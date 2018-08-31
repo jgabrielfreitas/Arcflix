@@ -11,6 +11,7 @@ dependencies {
   def libs = rootProject.ext
 
   libs.kotlinRelated.each { implementation it }
+  libs.roomRelated.each { implementation it }
   api libs.rxAndroid
   libs.retrofitRelated.each { api it }
   api project(':models')
