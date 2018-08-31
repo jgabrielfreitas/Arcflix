@@ -15,9 +15,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
-        buildConfigField "String", "API_KEY", "\"${getLocalProperty("api_key")}\""
     }
     buildTypes {
         release {
@@ -40,28 +37,17 @@ androidExtensions {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-
     def libs = rootProject.ext
-
     // related
     libs.kotlinRelated.each { implementation it }
     libs.mobileUIRelated.each { implementation it }
-    libs.retrofitRelated.each { implementation it }
     libs.unitTestingJavaOnlyRelated.each { testImplementation it }
     libs.androidTestingRelated.each { androidTestImplementation it }
-
     // libraries
     implementation libs.glide
-    implementation libs.rxAndroid
     implementation libs.dagger
     implementation libs.daggerAndroid
-
     // kotlin annotations processors
     kapt libs.daggerCompiler
-}
-
-def getLocalProperty(String property) {
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-    return properties.getProperty(property)
+    implementation project(':core')
 }

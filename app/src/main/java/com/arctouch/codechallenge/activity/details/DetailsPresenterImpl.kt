@@ -2,9 +2,9 @@ package com.arctouch.codechallenge.activity.details
 
 import android.os.Bundle
 import com.arctouch.codechallenge.activity.base.BasePresenterImpl
-import com.arctouch.codechallenge.infra.HttpResponseHandler
-import com.arctouch.codechallenge.infra.service.tmdb.TmdbService
-import com.arctouch.codechallenge.model.Movie
+import com.jgabrielfreitas.infrastructure.HttpResponseHandler
+import com.jgabrielfreitas.models.Movie
+import com.jgabrielfreitas.infrastructure.service.tmdb.TmdbService
 import java.lang.Exception
 
 class DetailsPresenterImpl(var view: DetailsView, var serviceApi: TmdbService) : BasePresenterImpl(view),
@@ -13,10 +13,10 @@ class DetailsPresenterImpl(var view: DetailsView, var serviceApi: TmdbService) :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val movie = savedInstanceState?.getParcelable<Movie>("movie")
-        movie?.id?.let { movieId ->
+        val movieId = savedInstanceState?.getLong("movieId")
+        movieId?.let {
             view.onStartSearch()
-            serviceApi.getRemoteMovieDetails(this, movieId)
+            serviceApi.getRemoteMovieDetails(this, it)
         }
     }
 

@@ -9,7 +9,6 @@ import com.arctouch.codechallenge.activity.details.DetailsActivity
 import com.arctouch.codechallenge.di.component.DaggerHomeComponent
 import com.arctouch.codechallenge.extension.toast
 import com.arctouch.codechallenge.listener.EndlessScroll
-import com.arctouch.codechallenge.model.Movie
 import kotlinx.android.synthetic.main.home_activity.*
 import java.lang.Exception
 import javax.inject.Inject
@@ -17,6 +16,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.arctouch.codechallenge.listener.EndlessScrollListener
 import com.arctouch.codechallenge.R.string.default_error_message
+import com.jgabrielfreitas.models.Movie
 
 
 class HomeActivity : BaseNetworkActivity(), HomeView, EndlessScrollListener {
@@ -59,7 +59,7 @@ class HomeActivity : BaseNetworkActivity(), HomeView, EndlessScrollListener {
 
     override fun openMovieDetails(movie: Movie) {
         val intent = Intent(this, DetailsActivity::class.java).apply {
-            putExtra("movie", movie)
+            putExtra("movieId", movie.id)
         }
         startActivity(intent)
     }

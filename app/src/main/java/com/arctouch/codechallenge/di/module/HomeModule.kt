@@ -4,11 +4,11 @@ import com.arctouch.codechallenge.activity.home.HomeActivity
 import com.arctouch.codechallenge.activity.home.HomePresenter
 import com.arctouch.codechallenge.activity.home.HomePresenterImpl
 import com.arctouch.codechallenge.activity.home.HomeView
-import com.arctouch.codechallenge.infra.service.tmdb.TmdbService
-import com.arctouch.codechallenge.infra.service.tmdb.TmdbServiceImpl
-import com.arctouch.codechallenge.infra.api.TmdbApi
-import com.arctouch.codechallenge.infra.service.LocationConfigurationService
-import com.arctouch.codechallenge.infra.service.tmdb.BrazilianLocationConfigurationService
+import com.jgabrielfreitas.infrastructure.api.TmdbApi
+import com.jgabrielfreitas.infrastructure.service.LocationConfigurationService
+import com.jgabrielfreitas.infrastructure.service.tmdb.BrazilianLocationConfigurationService
+import com.jgabrielfreitas.infrastructure.service.tmdb.TmdbService
+import com.jgabrielfreitas.infrastructure.service.tmdb.TmdbServiceImpl
 import dagger.Module
 import dagger.Provides
 
