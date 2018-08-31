@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.splash.SplashActivity"
+            android:name=".ui.activity.splash.SplashActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,8 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.home.HomeActivity" />
-        <activity android:name=".activity.details.DetailsActivity"></activity>
+        <activity android:name=".ui.activity.home.HomeActivity" />
+        <activity android:name=".ui.activity.details.DetailsActivity"></activity>
     </application>
 
 </manifest>

@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.arctouch.codechallenge.R
-import com.arctouch.codechallenge.activity.base.BaseNetworkActivity
-import com.arctouch.codechallenge.activity.details.DetailsActivity
 import com.arctouch.codechallenge.di.component.DaggerHomeComponent
 import com.arctouch.codechallenge.extension.toast
 import com.arctouch.codechallenge.listener.EndlessScroll
@@ -16,6 +14,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.arctouch.codechallenge.listener.EndlessScrollListener
 import com.arctouch.codechallenge.R.string.default_error_message
+import com.arctouch.codechallenge.ui.activity.base.BaseNetworkActivity
+import com.arctouch.codechallenge.ui.activity.details.DetailsActivity
 import com.jgabrielfreitas.models.Movie
 
 

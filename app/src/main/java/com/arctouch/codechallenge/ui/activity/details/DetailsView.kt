@@ -1,7 +1,7 @@
 package com.arctouch.codechallenge.ui.activity.details
 
-import com.arctouch.codechallenge.activity.base.BaseView
-import com.arctouch.codechallenge.activity.base.LoaderView
+import com.arctouch.codechallenge.ui.activity.base.BaseView
+import com.arctouch.codechallenge.ui.activity.base.LoaderView
 import com.jgabrielfreitas.models.Movie
 import java.lang.Exception
 
