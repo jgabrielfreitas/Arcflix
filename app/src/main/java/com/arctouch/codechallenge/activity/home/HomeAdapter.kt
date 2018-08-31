@@ -25,8 +25,8 @@ class HomeAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<HomeAd
 
         fun bind(movie: Movie) {
             itemView.titleTextView.text = movie.title
-            itemView.genresTextView.text = movie.genres?.joinToString(separator = ", ") { it.name }
-            itemView.releaseDateTextView.text = movie.releaseDate
+            itemView.genresTextView.text = movie.genres()
+            itemView.releaseDateTextView.text = movie.releaseDate()
 
             Glide.with(itemView)
                  .load(movie.posterPath?.let { movieImageUrlBuilder.buildPosterUrl(it) })

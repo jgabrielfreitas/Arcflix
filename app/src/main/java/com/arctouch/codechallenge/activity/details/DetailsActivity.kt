@@ -34,8 +34,8 @@ class DetailsActivity : BaseActivity(), DetailsView {
                 .apply(RequestOptions().placeholder(R.drawable.ic_image_placeholder))
                 .into(posterImageView)
         titleTextView.text = movie.title
-        genresTextView.text = movie.genres?.joinToString(separator = ", ") { it.name }
-        releaseDateTextView.text = movie.releaseDate
+        genresTextView.text = movie.genres()
+        releaseDateTextView.text = movie.releaseDate()
         descriptionTextView.text = movie.overview
         reviewNoteTextView.text = movie.reviewNote()
         avgTimeTextView.text = movie.runtime()

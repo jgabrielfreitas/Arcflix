@@ -1,6 +1,7 @@
 package com.arctouch.codechallenge.model
 
 import android.os.Parcelable
+import com.arctouch.codechallenge.util.DateUtils
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
@@ -32,4 +33,8 @@ data class Movie(
     fun reviewNote() = "$voteAverage/10"
 
     fun runtime() = "${runtime?.toString() ?: "--"}m"
+
+    fun genres() = genres?.joinToString(separator = ", ") { it.name }
+
+    fun releaseDate() = DateUtils().convertStringToDate(releaseDate)
 }
