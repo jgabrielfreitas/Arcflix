@@ -33,6 +33,7 @@ ext {
   daggerAndroid = "com.google.dagger:dagger-android-support:${daggerVersion}"
   daggerCompiler = "com.google.dagger:dagger-compiler:${daggerVersion}"
   glide = "com.github.bumptech.glide:glide:${glideVersion}"
+  moshi = "com.squareup.retrofit2:converter-moshi:${retrofitVersion}"
 
 
   kotlin = [
@@ -47,7 +48,7 @@ ext {
       retrofitGsonConverter: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
       okHttpLogger         : "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
       adapter_rxjava2      : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
-      moshi                : "com.squareup.retrofit2:converter-moshi:${retrofitVersion}"
+      moshi                : moshi
   ]
 
   retrofitRelated = retrofit.values()

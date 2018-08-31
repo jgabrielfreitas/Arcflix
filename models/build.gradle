@@ -1,0 +1,8 @@
+apply from: "../base-module.gradle"
+
+dependencies {
+  def libs = rootProject.ext
+
+  libs.kotlinRelated.each { implementation it }
+  implementation libs.moshi
+}
