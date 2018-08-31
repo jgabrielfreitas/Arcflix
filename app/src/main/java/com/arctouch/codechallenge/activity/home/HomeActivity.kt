@@ -1,17 +1,25 @@
 package com.arctouch.codechallenge.activity.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.arctouch.codechallenge.R
 import com.arctouch.codechallenge.activity.base.BaseNetworkActivity
+import com.arctouch.codechallenge.activity.details.DetailsActivity
 import com.arctouch.codechallenge.di.component.DaggerHomeComponent
 import com.arctouch.codechallenge.extension.toast
+import com.arctouch.codechallenge.listener.EndlessScroll
 import com.arctouch.codechallenge.model.Movie
 import kotlinx.android.synthetic.main.home_activity.*
 import java.lang.Exception
 import javax.inject.Inject
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import com.arctouch.codechallenge.listener.EndlessScrollListener
+import com.arctouch.codechallenge.R.string.default_error_message
 
-class HomeActivity : BaseNetworkActivity(), HomeView {
+
+class HomeActivity : BaseNetworkActivity(), HomeView, EndlessScrollListener {
 
     @Inject lateinit var presenter: HomePresenter
     private var movies: MutableList<Movie> = mutableListOf()
@@ -19,11 +27,23 @@ class HomeActivity : BaseNetworkActivity(), HomeView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
-        recyclerView.adapter = HomeAdapter(movies)
-        DaggerHomeComponent.builder()
-                            .create(this)
-                            .inject(this)
+        DaggerHomeComponent.builder().apply {
+            create(this@HomeActivity).apply { inject(this@HomeActivity) }
+        }
+        prepareUi()
         presenter.onCreate(savedInstanceState)
+    }
+
+    private fun prepareUi() {
+        val linearLayoutManager = LinearLayoutManager(this)
+        val homeAdapter = HomeAdapter(movies).apply {
+            onItemClick = { movie -> presenter.onMovieClicked(movie) }
+        }
+        recyclerView.apply {
+            adapter = homeAdapter
+            layoutManager = linearLayoutManager
+            addOnScrollListener(EndlessScroll(linearLayoutManager, this@HomeActivity))
+        }
     }
 
     override fun onStartSearch() {
@@ -40,9 +60,18 @@ class HomeActivity : BaseNetworkActivity(), HomeView {
     }
 
     override fun onError(exception: Exception) {
-        toast("ooops...")
-        finish()
+        toast(resources.getString(default_error_message))
     }
 
+    override fun openMovieDetails(movie: Movie) {
+        val intent = Intent(this, DetailsActivity::class.java).apply {
+            putExtra("movie", movie)
+        }
+        startActivity(intent)
+    }
+
+    override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
+        presenter.requestUpcomingMovies(page.toLong())
+    }
 
 }

@@ -14,4 +14,6 @@ interface HomeView : BaseView {
 
   fun onError(exception: Exception)
 
+  fun openMovieDetails(movie: Movie)
+
 }

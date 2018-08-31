@@ -5,20 +5,22 @@ import com.arctouch.codechallenge.activity.base.BasePresenterImpl
 import com.arctouch.codechallenge.infra.HttpResponseHandler
 import com.arctouch.codechallenge.infra.data.Cache
 import com.arctouch.codechallenge.infra.service.tmdb.TmdbService
+import com.arctouch.codechallenge.model.Movie
 import com.arctouch.codechallenge.model.UpcomingMoviesResponse
 import java.lang.Exception
 
 class HomePresenterImpl(var view: HomeView, var serviceApi: TmdbService) : BasePresenterImpl(view),
                                                    HomePresenter, HttpResponseHandler<UpcomingMoviesResponse> {
 
-    private val FIRST_PAGE: Long = 1
+    private val firstPage: Long = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requestUpcomingMovies()
+        requestUpcomingMovies(firstPage)
     }
 
-    private fun requestUpcomingMovies(page: Long = FIRST_PAGE) {
+    override fun requestUpcomingMovies(page: Long) {
+        view.onStartSearch()
         serviceApi.getUpcomingMovies(httpHandler = this, pagePosition = page)
     }
 
@@ -34,7 +36,11 @@ class HomePresenterImpl(var view: HomeView, var serviceApi: TmdbService) : BaseP
     }
 
     override fun onError(throwable: Throwable) {
-        view.onError(exception = Exception(""))
+        view.onError(Exception("a exception occurs"))
+    }
+
+    override fun onMovieClicked(movie: Movie) {
+        view.openMovieDetails(movie)
     }
 
 }
