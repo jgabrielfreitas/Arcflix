@@ -1,6 +1,7 @@
 package com.arctouch.codechallenge.activity.details
 
 import android.os.Bundle
+import android.view.View
 import com.arctouch.codechallenge.R
 import com.arctouch.codechallenge.activity.base.BaseActivity
 import com.arctouch.codechallenge.di.component.DaggerDetailsComponent
@@ -15,7 +16,8 @@ import javax.inject.Inject
 
 class DetailsActivity : BaseActivity(), DetailsView {
 
-    @Inject lateinit var presenter: DetailsPresenter
+    @Inject
+    lateinit var presenter: DetailsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,13 +36,25 @@ class DetailsActivity : BaseActivity(), DetailsView {
         titleTextView.text = movie.title
         genresTextView.text = movie.genres?.joinToString(separator = ", ") { it.name }
         releaseDateTextView.text = movie.releaseDate
+        descriptionTextView.text = movie.overview
         reviewNoteTextView.text = movie.reviewNote()
         avgTimeTextView.text = movie.runtime()
     }
 
     override fun onError(exception: Exception) = toast(resources.getString(R.string.default_error_message))
 
-    override fun onStartSearch() {}
+    override fun onStartSearch() = movieProgressBar.run { visibility = View.VISIBLE }
 
-    override fun onStopSearch() {}
+    override fun onStopSearch() {
+        movieProgressBar.run { visibility = View.GONE }
+        posterImageView.run { visibility = View.VISIBLE }
+        titleTextView.run { visibility = View.VISIBLE }
+        genresTextView.run { visibility = View.VISIBLE }
+        releaseDateTextView.run { visibility = View.VISIBLE }
+        reviewNoteTextView.run { visibility = View.VISIBLE }
+        avgTimeTextView.run { visibility = View.VISIBLE }
+        imageView.run { visibility = View.VISIBLE }
+        imageView2.run { visibility = View.VISIBLE }
+        scrollView.run { visibility = View.VISIBLE }
+    }
 }
