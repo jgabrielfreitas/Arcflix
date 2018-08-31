@@ -1,0 +1,23 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+  def androidConfig = rootProject.ext
+  compileSdkVersion androidConfig["compileSDK"]
+  defaultConfig {
+    minSdkVersion androidConfig["minSDK"]
+    targetSdkVersion androidConfig["targetSDK"]
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  testOptions {
+    unitTests {
+      includeAndroidResources = true
+    }
+  }
+}
+
