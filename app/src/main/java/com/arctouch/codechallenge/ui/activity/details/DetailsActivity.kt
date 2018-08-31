@@ -1,9 +1,9 @@
-package com.arctouch.codechallenge.activity.details
+package com.arctouch.codechallenge.ui.activity.details
 
 import android.os.Bundle
 import android.view.View
 import com.arctouch.codechallenge.R
-import com.arctouch.codechallenge.activity.base.BaseActivity
+import com.arctouch.codechallenge.ui.activity.base.BaseActivity
 import com.arctouch.codechallenge.di.component.DaggerDetailsComponent
 import com.arctouch.codechallenge.extension.toast
 import com.arctouch.codechallenge.helper.MovieHelper

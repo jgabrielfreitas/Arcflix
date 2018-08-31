@@ -1,6 +1,6 @@
 package com.arctouch.codechallenge.di.component
 
-import com.arctouch.codechallenge.activity.details.DetailsActivity
+import com.arctouch.codechallenge.ui.activity.details.DetailsActivity
 import com.arctouch.codechallenge.di.build.ActivityBuilder
 import com.arctouch.codechallenge.di.module.DetailsModule
 import dagger.Component

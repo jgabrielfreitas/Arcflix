@@ -1,6 +1,6 @@
-package com.arctouch.codechallenge.activity.home
+package com.arctouch.codechallenge.ui.activity.home
 
-import com.arctouch.codechallenge.activity.base.BasePresenterContract
+import com.arctouch.codechallenge.ui.activity.base.BasePresenterContract
 import com.jgabrielfreitas.models.Movie
 
 interface HomePresenter: BasePresenterContract {

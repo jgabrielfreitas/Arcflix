@@ -1,4 +1,4 @@
-package com.arctouch.codechallenge.activity.base
+package com.arctouch.codechallenge.ui.activity.base
 
 import android.annotation.SuppressLint
 import android.os.Bundle

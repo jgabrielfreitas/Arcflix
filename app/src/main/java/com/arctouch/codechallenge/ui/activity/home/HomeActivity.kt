@@ -1,4 +1,4 @@
-package com.arctouch.codechallenge.activity.home
+package com.arctouch.codechallenge.ui.activity.home
 
 import android.content.Intent
 import android.os.Bundle

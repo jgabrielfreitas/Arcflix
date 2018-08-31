@@ -1,7 +1,7 @@
-package com.arctouch.codechallenge.activity.details
+package com.arctouch.codechallenge.ui.activity.details
 
 import android.os.Bundle
-import com.arctouch.codechallenge.activity.base.BasePresenterImpl
+import com.arctouch.codechallenge.ui.activity.base.BasePresenterImpl
 import com.jgabrielfreitas.infrastructure.HttpResponseHandler
 import com.jgabrielfreitas.models.Movie
 import com.jgabrielfreitas.infrastructure.service.tmdb.TmdbService

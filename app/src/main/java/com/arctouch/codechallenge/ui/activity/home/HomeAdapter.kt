@@ -1,4 +1,4 @@
-package com.arctouch.codechallenge.activity.home
+package com.arctouch.codechallenge.ui.activity.home
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

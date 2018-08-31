@@ -1,4 +1,4 @@
-package com.arctouch.codechallenge.activity.splash
+package com.arctouch.codechallenge.ui.activity.splash
 
 import android.content.Intent
 import android.os.Bundle

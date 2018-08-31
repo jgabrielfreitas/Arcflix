@@ -1,4 +1,4 @@
-package com.arctouch.codechallenge.activity.home
+package com.arctouch.codechallenge.ui.activity.home
 
 import com.arctouch.codechallenge.activity.base.BaseView
 import com.arctouch.codechallenge.activity.base.LoaderView
