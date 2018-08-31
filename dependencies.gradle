@@ -1,7 +1,7 @@
 ext {
 
   // Android Targets
-  minSDK = 19
+  minSDK = 23
   targetSDK = 27
   compileSDK = 27
   buildToolsVersion = '27.0.1'
