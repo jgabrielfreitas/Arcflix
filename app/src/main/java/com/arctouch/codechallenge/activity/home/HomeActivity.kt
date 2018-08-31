@@ -46,21 +46,15 @@ class HomeActivity : BaseNetworkActivity(), HomeView, EndlessScrollListener {
         }
     }
 
-    override fun onStartSearch() {
-        progressBar.visibility = View.VISIBLE
-    }
+    override fun onStartSearch() = progressBar.run { visibility = View.VISIBLE }
 
-    override fun onStopSearch() {
-        progressBar.visibility = View.GONE
-    }
+    override fun onStopSearch() = progressBar.run { visibility = View.GONE }
+
+    override fun onError(exception: Exception) = toast(resources.getString(default_error_message))
 
     override fun addMovies(movies: List<Movie>) {
         this.movies.addAll(movies)
         recyclerView.adapter.notifyDataSetChanged()
-    }
-
-    override fun onError(exception: Exception) {
-        toast(resources.getString(default_error_message))
     }
 
     override fun openMovieDetails(movie: Movie) {
