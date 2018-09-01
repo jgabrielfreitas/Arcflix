@@ -6,7 +6,7 @@ import com.jgabrielfreitas.infrastructure.persistence.database.ApplicationDataba
 import dagger.Module
 import dagger.Provides
 
-@Module(includes = [(ContextModule::class)])
+@Module
 class PersistenceModule {
 
     @Provides

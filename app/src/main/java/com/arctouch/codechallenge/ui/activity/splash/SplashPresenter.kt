@@ -1,5 +1,7 @@
 package com.arctouch.codechallenge.ui.activity.splash
 
-interface SplashPresenter {
+import com.arctouch.codechallenge.ui.activity.base.BasePresenterContract
+
+interface SplashPresenter : BasePresenterContract {
 
 }
