@@ -7,6 +7,7 @@ import com.jgabrielfreitas.models.Genre
 
 @Entity(tableName = "Genre")
 class GenreEntity(
-    @PrimaryKey
-    @ColumnInfo(name = "id")   override val id: Int,
-    @ColumnInfo(name = "name") override val name: String) : Genre(id, name)
+        @PrimaryKey
+        @ColumnInfo(name = "ID") override var id: Int,
+        @ColumnInfo(name = "NAME") override var name: String
+) : Genre(id, name)

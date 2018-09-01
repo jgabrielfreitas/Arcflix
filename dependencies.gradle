@@ -35,6 +35,8 @@ ext {
   daggerCompiler = "com.google.dagger:dagger-compiler:${daggerVersion}"
   glide = "com.github.bumptech.glide:glide:${glideVersion}"
   moshi = "com.squareup.retrofit2:converter-moshi:${retrofitVersion}"
+  roomCompiler = "android.arch.persistence.room:compiler:${roomVersion}"
+  room = "android.arch.persistence.room:runtime:${roomVersion}"
 
   kotlin = [
       kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}"
@@ -62,13 +64,6 @@ ext {
   ]
 
   mobileUIRelated = mobileUI.values()
-
-  room = [
-      runtime : "android.arch.persistence.room:runtime:${roomVersion}",
-      compiler: "android.arch.persistence.room:compiler:${roomVersion}"
-  ]
-
-  roomRelated = room.values()
 
   unitTestingJavaOnly = [
       junit  : "junit:junit:${jUnitVersion}",
