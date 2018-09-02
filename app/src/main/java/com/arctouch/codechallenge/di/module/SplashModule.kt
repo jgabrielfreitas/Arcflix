@@ -5,6 +5,7 @@ import com.arctouch.codechallenge.ui.activity.splash.SplashActivity
 import com.arctouch.codechallenge.ui.activity.splash.SplashPresenter
 import com.arctouch.codechallenge.ui.activity.splash.SplashPresenterImpl
 import com.arctouch.codechallenge.ui.activity.splash.SplashView
+import com.jgabrielfreitas.infrastructure.persistence.cache.CacheRequirements
 import com.jgabrielfreitas.infrastructure.persistence.database.ApplicationDatabase
 import com.jgabrielfreitas.infrastructure.service.tmdb.TmdbService
 import dagger.Module
@@ -28,8 +29,9 @@ class SplashModule {
     @Provides
     fun providesPresenter(splashView: SplashView,
                           tmdbApi   : TmdbService,
-                          database  : ApplicationDatabase): SplashPresenter {
-        return SplashPresenterImpl(splashView, tmdbApi, database)
+                          database  : ApplicationDatabase,
+                          cacheRequirements: CacheRequirements): SplashPresenter {
+        return SplashPresenterImpl(splashView, tmdbApi, database, cacheRequirements)
     }
 
 }
