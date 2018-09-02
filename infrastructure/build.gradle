@@ -16,6 +16,7 @@ dependencies {
   api libs.room
   api libs.rxRoom
   api libs.rxAndroid
+  api libs.hawk
   api project(':models')
   kapt libs.roomCompiler
 }
