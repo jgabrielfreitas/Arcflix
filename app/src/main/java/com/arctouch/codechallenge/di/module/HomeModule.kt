@@ -1,19 +1,24 @@
 package com.arctouch.codechallenge.di.module
 
+import android.content.Context
 import com.arctouch.codechallenge.ui.activity.home.HomeActivity
 import com.arctouch.codechallenge.ui.activity.home.HomePresenter
 import com.arctouch.codechallenge.ui.activity.home.HomePresenterImpl
 import com.arctouch.codechallenge.ui.activity.home.HomeView
-import com.jgabrielfreitas.infrastructure.api.TmdbApi
-import com.jgabrielfreitas.infrastructure.service.LocationConfigurationService
-import com.jgabrielfreitas.infrastructure.service.tmdb.BrazilianLocationConfigurationService
+import com.jgabrielfreitas.infrastructure.persistence.database.ApplicationDatabase
 import com.jgabrielfreitas.infrastructure.service.tmdb.TmdbService
-import com.jgabrielfreitas.infrastructure.service.tmdb.TmdbServiceImpl
 import dagger.Module
 import dagger.Provides
 
-@Module(includes = [(NetworkModule::class), (TmdbServiceApiModule::class)])
+@Module(includes = [(NetworkModule::class),
+                    (TmdbServiceApiModule::class),
+                    (PersistenceModule::class)])
 class HomeModule {
+
+    @Provides
+    fun providesContext(homeActivity: HomeActivity): Context {
+        return homeActivity
+    }
 
     @Provides
     fun providesView(homeActivity: HomeActivity): HomeView {
@@ -21,8 +26,10 @@ class HomeModule {
     }
 
     @Provides
-    fun providesPresenter(homeView: HomeView, serviceApi: TmdbService): HomePresenter {
-        return HomePresenterImpl(homeView, serviceApi)
+    fun providesPresenter(homeView: HomeView,
+                          serviceApi:TmdbService,
+                          applicationDatabase: ApplicationDatabase): HomePresenter {
+        return HomePresenterImpl(homeView, serviceApi, applicationDatabase)
     }
 
 }

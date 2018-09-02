@@ -8,9 +8,4 @@ class GenreEntity(
         @PrimaryKey
         var id: Int,
         var name: String
-) {
-
-    override fun toString(): String {
-        return "GenreEntity(id=$id, name='$name')"
-    }
-}
+)

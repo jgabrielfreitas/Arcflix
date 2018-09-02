@@ -36,6 +36,6 @@ class SplashActivity : BaseNetworkActivity(), SplashView, PersistenceNeeded {
         }
     }
 
-    override fun onError(exception: Exception) = toast("wooooow")
+    override fun onError(exception: Exception) = toast(resources.getString(R.string.default_error_message))
 
 }

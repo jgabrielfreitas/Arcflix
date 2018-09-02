@@ -1,8 +1,6 @@
 package com.arctouch.codechallenge.ui.activity.splash
 
-import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
 import com.arctouch.codechallenge.ui.activity.base.BasePresenterImpl
 import com.jgabrielfreitas.infrastructure.HttpResponseHandler
 import com.jgabrielfreitas.infrastructure.persistence.database.ApplicationDatabase
@@ -10,6 +8,7 @@ import com.jgabrielfreitas.infrastructure.persistence.entity.GenreEntity
 import com.jgabrielfreitas.infrastructure.service.tmdb.TmdbService
 import com.jgabrielfreitas.models.Genre
 import com.jgabrielfreitas.models.GenreResponse
+import io.reactivex.Observable
 
 class SplashPresenterImpl(val splashView: SplashView,
                           val tmdbApi   : TmdbService,
@@ -20,11 +19,10 @@ class SplashPresenterImpl(val splashView: SplashView,
         super.onCreate(savedInstanceState)
         tmdbApi.getGenres(this)
         splashView.onStartSearch()
-        AsyncTask.execute { database.genreDao().getAll().forEach { Log.e("genre", it.toString()) } }
     }
 
     override fun onReceive(response: GenreResponse) {
-        AsyncTask.execute { persisteGenres(response.genres) }
+        Observable.fromCallable { persisteGenres(response.genres) }
     }
 
     override fun onComplete() = splashView.onFinishRequest()

@@ -1,5 +1,6 @@
 package com.arctouch.codechallenge.di.module
 
+import com.jgabrielfreitas.infrastructure.BuildConfig.BASE_URL
 import com.jgabrielfreitas.infrastructure.api.TmdbApi
 import dagger.Module
 import dagger.Provides
@@ -26,7 +27,7 @@ class NetworkModule {
   @Provides
   fun providesRetrofit(httpClient: OkHttpClient): TmdbApi {
     return Retrofit.Builder()
-                   .baseUrl(TmdbApi.URL)
+                   .baseUrl(BASE_URL)
                    .client(httpClient)
                    .addConverterFactory(MoshiConverterFactory.create())
                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

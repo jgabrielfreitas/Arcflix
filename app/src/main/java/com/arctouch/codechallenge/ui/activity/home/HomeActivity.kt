@@ -27,9 +27,7 @@ class HomeActivity : BaseNetworkActivity(), HomeView, EndlessScrollListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
-        DaggerHomeComponent.builder().apply {
-            create(this@HomeActivity).apply { inject(this@HomeActivity) }
-        }
+        DaggerHomeComponent.builder().create(this).inject(this)
         prepareUi()
         presenter.onCreate(savedInstanceState)
     }
