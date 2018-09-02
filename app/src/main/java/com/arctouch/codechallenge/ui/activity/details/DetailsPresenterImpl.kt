@@ -29,7 +29,7 @@ class DetailsPresenterImpl(var view: DetailsView, var serviceApi: TmdbService) :
         view.onStopSearch()
     }
 
-    override fun onError(throwable: Throwable) {
+    override fun onError(throwable: Throwable?) {
         view.onError(Exception("a exception occurs"))
     }
 }

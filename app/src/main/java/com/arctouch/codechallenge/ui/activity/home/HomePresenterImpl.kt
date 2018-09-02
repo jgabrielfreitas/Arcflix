@@ -56,7 +56,7 @@ class HomePresenterImpl(var view: HomeView,
         return genreList
     }
 
-    override fun onError(throwable: Throwable) {
+    override fun onError(throwable: Throwable?) {
         view.onError(Exception("a exception occurs"))
     }
 
