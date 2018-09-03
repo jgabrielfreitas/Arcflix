@@ -1,23 +1,15 @@
 package com.arctouch.codechallenge.ui.activity.base
 
 import android.annotation.SuppressLint
-import android.os.Bundle
-import com.arctouch.codechallenge.di.component.DaggerNetworkComponent
-import com.arctouch.codechallenge.di.module.NetworkModule
-import com.jgabrielfreitas.infrastructure.api.TmdbApi
-import javax.inject.Inject
+import com.arctouch.codechallenge.ui.activity.fallback.ConnectionErrorActivity
+import java.lang.Exception
 
 @SuppressLint("Registered")
-open class BaseNetworkActivity : BaseActivity() {
+open class BaseNetworkActivity : BaseActivity(), HttpRequesterHandlerView {
 
-  @Inject lateinit var serviceAPI: TmdbApi
-
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    DaggerNetworkComponent.builder()
-                          .networkModule(NetworkModule())
-                          .build()
-                          .inject(this)
+  override fun onError(exception: Exception) {
+    doIntent(ConnectionErrorActivity::class.java)
   }
+
 
 }

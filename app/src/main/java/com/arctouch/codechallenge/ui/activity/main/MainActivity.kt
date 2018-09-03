@@ -1,6 +1,5 @@
 package com.arctouch.codechallenge.ui.activity.main
 
-import android.content.Intent
 import android.os.Bundle
 import com.arctouch.codechallenge.di.component.DaggerMainComponent
 import com.arctouch.codechallenge.ui.activity.base.BaseActivity
@@ -19,17 +18,10 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     override fun startApplication() {
-        doIntent(HomeActivity::class.java)
+        doIntent(HomeActivity::class.java, shouldKillAfterIntent = true)
     }
 
     override fun loadMoviesIds() {
-        doIntent(SplashActivity::class.java)
-    }
-
-    private fun <T>  doIntent(cls: Class<T>) {
-        with(Intent(this, cls)) {
-            this@MainActivity.startActivity(this)
-            finish()
-        }
+        doIntent(SplashActivity::class.java, shouldKillAfterIntent = true)
     }
 }

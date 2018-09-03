@@ -1,22 +1,18 @@
 package com.arctouch.codechallenge.ui.activity.home
 
-import android.content.Intent
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.arctouch.codechallenge.R
 import com.arctouch.codechallenge.di.component.DaggerHomeComponent
-import com.arctouch.codechallenge.extension.toast
 import com.arctouch.codechallenge.listener.EndlessScroll
-import kotlinx.android.synthetic.main.home_activity.*
-import java.lang.Exception
-import javax.inject.Inject
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import com.arctouch.codechallenge.listener.EndlessScrollListener
-import com.arctouch.codechallenge.R.string.default_error_message
 import com.arctouch.codechallenge.ui.activity.base.BaseNetworkActivity
 import com.arctouch.codechallenge.ui.activity.details.DetailsActivity
 import com.jgabrielfreitas.models.Movie
+import kotlinx.android.synthetic.main.home_activity.*
+import javax.inject.Inject
 
 
 class HomeActivity : BaseNetworkActivity(), HomeView, EndlessScrollListener {
@@ -48,18 +44,13 @@ class HomeActivity : BaseNetworkActivity(), HomeView, EndlessScrollListener {
 
     override fun onStopSearch() = progressBar.run { visibility = View.GONE }
 
-    override fun onError(exception: Exception) = toast(resources.getString(default_error_message))
-
     override fun addMovies(movies: List<Movie>) {
         this.movies.addAll(movies)
         recyclerView.adapter.notifyDataSetChanged()
     }
 
     override fun openMovieDetails(movie: Movie) {
-        val intent = Intent(this, DetailsActivity::class.java).apply {
-            putExtra("movieId", movie.id)
-        }
-        startActivity(intent)
+        doIntent(DetailsActivity::class.java, hashMapOf(Pair("movieId", movie.id)))
     }
 
     override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {

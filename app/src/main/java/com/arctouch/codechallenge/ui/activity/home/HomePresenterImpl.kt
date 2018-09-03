@@ -1,8 +1,8 @@
 package com.arctouch.codechallenge.ui.activity.home
 
 import android.os.Bundle
-import com.arctouch.codechallenge.ui.activity.base.BasePresenterImpl
 import com.arctouch.codechallenge.helper.MovieHelper
+import com.arctouch.codechallenge.ui.activity.base.BasePresenterImpl
 import com.jgabrielfreitas.infrastructure.HttpResponseHandler
 import com.jgabrielfreitas.infrastructure.persistence.database.ApplicationDatabase
 import com.jgabrielfreitas.infrastructure.persistence.entity.GenreEntity
