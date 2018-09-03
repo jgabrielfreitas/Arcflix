@@ -6,6 +6,6 @@ interface HttpResponseHandler<in T> {
 
     fun onComplete()
 
-    fun onError(throwable: Throwable)
+    fun onError(throwable: Throwable?=null)
 
 }

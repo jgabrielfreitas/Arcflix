@@ -28,7 +28,7 @@ class TmdbServiceImpl(var serviceApi: TmdbApi,
                   .observeOn(AndroidSchedulers.mainThread())
                   .doOnComplete { httpHandler.onComplete() }
                   .doOnNext { httpHandler.onReceive(it) }
-                  .doOnError { httpHandler.onError(it) }
+                  .onExceptionResumeNext { httpHandler.onError() }
                   .subscribe()
     }
 

@@ -32,7 +32,7 @@ class SplashPresenterImpl(val splashView: SplashView,
 
     override fun onComplete() = splashView.onFinishRequest()
 
-    override fun onError(throwable: Throwable) = splashView.onError(Exception("wow"))
+    override fun onError(throwable: Throwable?) = splashView.onError(Exception("wow"))
 
     private fun persistGenres(genres: List<Genre>) {
         val gerenDao = database.genreDao()

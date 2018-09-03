@@ -3,8 +3,8 @@ package com.arctouch.codechallenge.ui.activity.details
 import android.os.Bundle
 import com.arctouch.codechallenge.ui.activity.base.BasePresenterImpl
 import com.jgabrielfreitas.infrastructure.HttpResponseHandler
-import com.jgabrielfreitas.models.Movie
 import com.jgabrielfreitas.infrastructure.service.tmdb.TmdbService
+import com.jgabrielfreitas.models.Movie
 import java.lang.Exception
 
 class DetailsPresenterImpl(var view: DetailsView, var serviceApi: TmdbService) : BasePresenterImpl(view),
@@ -29,7 +29,7 @@ class DetailsPresenterImpl(var view: DetailsView, var serviceApi: TmdbService) :
         view.onStopSearch()
     }
 
-    override fun onError(throwable: Throwable) {
+    override fun onError(throwable: Throwable?) {
         view.onError(Exception("a exception occurs"))
     }
 }

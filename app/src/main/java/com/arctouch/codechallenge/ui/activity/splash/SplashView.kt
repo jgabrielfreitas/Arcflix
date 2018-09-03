@@ -1,13 +1,11 @@
 package com.arctouch.codechallenge.ui.activity.splash
 
 import com.arctouch.codechallenge.ui.activity.base.BaseView
+import com.arctouch.codechallenge.ui.activity.base.HttpRequesterHandlerView
 import com.arctouch.codechallenge.ui.activity.base.LoaderView
-import java.lang.Exception
 
-interface SplashView: BaseView, LoaderView {
+interface SplashView: BaseView, HttpRequesterHandlerView, LoaderView {
 
     fun onFinishRequest()
-
-    fun onError(exception: Exception)
 
 }
