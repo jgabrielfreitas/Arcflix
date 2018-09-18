@@ -1,0 +1,92 @@
+ext {
+
+  // Android Targets
+  minSDK = 23
+  targetSDK = 27
+  compileSDK = 27
+  buildToolsVersion = '27.0.1'
+
+  // Kotlin
+  kotlinJVMTarget = "1.6"
+  kotlinVersion = '1.2.30'
+
+  // Libraries
+  okHttpVersion = '3.11.0'
+  retrofitVersion = '2.3.0'
+  rxAndroidVersion = '2.0.2'
+  supportLibraryVersion = '27.0.1'
+  constraintLayoutVersion = '1.1.2'
+  hawkVersion = '2.0.1'
+  daggerVersion = '2.16'
+  glideVersion = '4.6.1'
+  roomVersion = '1.1.1'
+
+  // Testing
+  jUnitVersion = '4.12'
+  assertJVersion = '3.8.0'
+  mockitoKotlinVersion = '1.5.0'
+  espressoCoreVersion = '3.0.1'
+  espressoToolsVersion = '1.0.1'
+
+  rxAndroid = "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
+  hawk = "com.orhanobut:hawk:${hawkVersion}"
+  dagger = "com.google.dagger:dagger:${daggerVersion}"
+  daggerAndroid = "com.google.dagger:dagger-android-support:${daggerVersion}"
+  daggerCompiler = "com.google.dagger:dagger-compiler:${daggerVersion}"
+  glide = "com.github.bumptech.glide:glide:${glideVersion}"
+  moshi = "com.squareup.retrofit2:converter-moshi:${retrofitVersion}"
+  roomCompiler = "android.arch.persistence.room:compiler:${roomVersion}"
+  room = "android.arch.persistence.room:runtime:${roomVersion}"
+  rxRoom = "android.arch.persistence.room:rxjava2:${roomVersion}"
+
+  kotlin = [
+      kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}"
+  ]
+
+  kotlinRelated = kotlin.values()
+
+  retrofit = [
+      retrofit             : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+      retrofitRxJavaAdapter: "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
+      retrofitGsonConverter: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+      okHttpLogger         : "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
+      adapter_rxjava2      : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
+      moshi                : moshi
+  ]
+
+  retrofitRelated = retrofit.values()
+
+  mobileUI = [
+      appCompat: "com.android.support:appcompat-v7:${supportLibraryVersion}",
+      design   : "com.android.support:design:${supportLibraryVersion}",
+      contraint: "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}",
+      cardview: "com.android.support:cardview-v7:${supportLibraryVersion}",
+      recyclerview: "com.android.support:recyclerview-v7:${supportLibraryVersion}"
+  ]
+
+  mobileUIRelated = mobileUI.values()
+
+  unitTestingJavaOnly = [
+      junit  : "junit:junit:${jUnitVersion}",
+      mockito: "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
+      assertj: "org.assertj:assertj-core:${assertJVersion}",
+  ]
+
+  unitTestingJavaOnlyRelated = unitTestingJavaOnly.values()
+
+  unitTestingAndroid = [
+      junit        : "junit:junit:${jUnitVersion}",
+      mockito      : "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
+      assertj      : "org.assertj:assertj-core:${assertJVersion}",
+      mockWebServer: "com.squareup.okhttp3:mockwebserver:${okHttpVersion}"
+  ]
+
+  androidTestingRelated = unitTestingAndroid.values()
+
+}
+
+allprojects {
+  repositories {
+    jcenter()
+  }
+}

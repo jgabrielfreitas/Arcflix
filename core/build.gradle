@@ -1,0 +1,11 @@
+apply from: "../base-module.gradle"
+apply plugin: 'kotlin-android'
+
+dependencies {
+    def libs = rootProject.ext
+    libs.kotlinRelated.each { implementation it }
+    api project(':domain')
+}
+repositories {
+    mavenCentral()
+}
